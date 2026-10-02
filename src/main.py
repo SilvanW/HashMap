@@ -10,7 +10,7 @@ hashmap.insert("yek", "value 1")
 
 print(hashmap.map)
 
-result = hashmap.retrieve("key")
+result = hashmap.retrieve("yek")
 
 print(result)
 

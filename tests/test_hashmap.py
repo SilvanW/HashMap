@@ -18,7 +18,7 @@ def test_simple_usecase(hashmap: HashMap):
 
     result = hashmap.retrieve("key")
 
-    assert result == "value"
+    assert result[0] == "value"
 
 
 def test_simple_usecase_invalid_key(hashmap: HashMap):
@@ -35,5 +35,5 @@ def test_probing(hashmap: HashMap):
     key_result = hashmap.retrieve("key")
     yek_result = hashmap.retrieve("yek")
 
-    assert key_result == "value"
-    assert yek_result == "value 1"
+    assert key_result[0] == "value"
+    assert yek_result[0] == "value 1"

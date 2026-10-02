@@ -24,7 +24,8 @@ class HashMap:
 
         self.map[index] = (key, value)
 
-    def retrieve(self, key: str) -> str:
+    def retrieve(self, key: str) -> tuple[str, int]:
+
         hash = ord_hashing(key)
 
         index = hash % self.size
@@ -33,11 +34,11 @@ class HashMap:
             raise IndexError(f"Hashmap does not contain key {key}")
 
         if self.map[index][0] == key:
-            return self.map[index][1]
+            return self.map[index][1], 1
 
-        # TODO: must also search other indexes using probing strategy (write tests first)
+        result = linear_probing_search(self.map, index, key)
 
-        return linear_probing_search(self.map, index, key)[1]
+        return result[0][1], result[1]
 
     @property
     def loading_factor(self) -> float:
