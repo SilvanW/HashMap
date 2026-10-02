@@ -1,0 +1,10 @@
+[project]
+name = "hashmap"
+version = "0.1.0"
+description = "HashMap Implementation for UZH ESC 413"
+readme = "README.md"
+authors = [
+    { name = "SilvanW", email = "silvan.wiedmer@bluewin.ch" }
+]
+requires-python = ">=3.13"
+dependencies = []
