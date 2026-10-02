@@ -1,17 +1,15 @@
 from hashmap import HashMap
 
-hashmap = HashMap(size=5)
+with open("data/corpus_1000.txt", "r") as fh:
+    corpus = fh.readlines()
 
-hashmap.insert("key", "value")
-hashmap.insert("value", "key")
-hashmap.insert("basic", "test")
-hashmap.insert("yek", "value 1")
+corpus: list[str] = [word for line in corpus for word in line.split(" ")]
 
+print(len(corpus))
 
-print(hashmap.map)
+hashmap = HashMap(size=1069)
 
-result = hashmap.retrieve("yek")
-
-print(result)
+for word in corpus:
+    hashmap.insert(word, word)
 
 print(hashmap.loading_factor)

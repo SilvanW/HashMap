@@ -1,0 +1,89 @@
+The Librarian of Five Shelves
+
+Mira kept the smallest library in the world. It had five shelves, numbered zero through four, and one rule older than the building itself: every book has a name, every name has a number, and the number decides the shelf.
+
+The number came from the Counting Machine, a brass contraption in the corner that swallowed a title, added up the value of its letters, and coughed out a figure. Mira would divide that figure by five, keep the remainder, and walk to the shelf it named. Remainder three, shelf three. No catalog, no index cards, no searching. The book's own name told her where it lived.
+
+"It's magic," said the boy who delivered her bread.
+
+"It's arithmetic," said Mira. "Magic would be less reliable."
+
+For months, the system was perfect. Lantern went to shelf one. Orchard went to shelf four. When someone asked for Lantern, Mira fed the title to the machine, got a one, and had the book in her hands before the kettle boiled.
+
+Then a woman arrived with two manuscripts, written by two rival poets who had, for reasons of cruelty or coincidence, named their works Key and Yek.
+
+Mira fed Key to the machine. Out came a number, and she shelved the book on shelf two. She fed Yek to the machine. Out came the same number. Same letters, same sum, same shelf.
+
+She stood there holding the second book, and for the first time in her career, shelf two was already occupied.
+
+"Well," she said. "This is the problem nobody mentions at the start."
+
+She could have thrown the book away. She could have built a sixth shelf, and a seventh, until the library sprawled across the town. Instead she did the quietest thing possible: she looked at shelf three, found it empty, and put Yek there.
+
+It felt like cheating. But it also felt like the only sensible thing to do. The book wanted to be on shelf two. Shelf two was taken. So it would live at the next open spot, and Mira would remember the rule: if your shelf is full, walk to the next one.
+
+The test came a week later. A scholar asked for Yek.
+
+Mira fed the title to the machine and got the familiar number. She walked to shelf two and found Key.
+
+She did not give up. A lesser librarian might have said, We don't have it, and sent the scholar away, but Mira knew what she had done a week ago, and so she did it again. She checked the title on the spine. Not a match. She stepped to shelf three. There it was.
+
+"Two looks," she said, handing it over. "One to find the wrong book, and one to find the right one."
+
+"Wouldn't it be faster if every book had its own shelf?"
+
+"Of course. Build me a shelf for every possible title and I'll find anything in a single step. But there are more possible titles than there are atoms in this town. So we compromise. Few shelves, quick answers most of the time, and a little walking when names collide."
+
+The scholar, who was the sort of person who counted things, wrote this down. He came back every week after that, and every week he counted: how many shelves Mira checked before she found each book. Most days the answer was one. Sometimes two. Once, on a terrible Thursday when four books with similar names arrived together, it was four.
+
+"The more crowded the shelves get," he told her, "the longer your walks."
+
+"Then I'd better not let the library fill up," said Mira.
+
+The trouble with her system showed itself in autumn, when a book went missing.
+
+Not stolen. Returned. The owner of Key decided she wanted her manuscript back, and Mira, who was tidy by nature, took it from shelf two and left the shelf bare.
+
+The next morning the scholar came for Yek.
+
+Mira fed the title to the machine. Shelf two. She looked. Empty. Her heart sank, because she knew her own rule: an empty shelf means the book isn't here. If it were here, it would have been placed on shelf two, or somewhere after a run of full shelves, never after a gap.
+
+"We don't have it," she said, and the scholar left, disappointed.
+
+That night she lay awake. Yek was on shelf three. She was certain of it. She walked down in her nightgown and found it exactly where she'd left it, sitting patiently behind a gap she had made herself.
+
+She understood then. The empty shelf had lied. It didn't mean nothing here and nothing beyond. It meant something used to be here. Her own tidiness had broken the trail.
+
+In the morning she cut a strip of black ribbon and tied a small bow to shelf two.
+
+"What's that for?" asked the bread boy.
+
+"It means a book once lived here and left. Keep walking."
+
+From then on, the rule had two halves. A truly empty shelf, with no ribbon, meant the search was over: the book was not in the library. A ribboned shelf meant carry on. And when a new book arrived, she was free to untie a ribbon and use that shelf again, because a ribbon marks a gap, not a wall.
+
+By winter, the library was nearly full. Four shelves held books and the fifth wore a ribbon, and the scholar's weekly counts had crept upward. Two looks, three looks, once five.
+
+"You need more shelves," he said.
+
+"I know."
+
+"But you can't just add them. The machine's remainders are tied to five. Add a sixth shelf and every book is in the wrong place."
+
+Mira smiled. He had understood faster than she had.
+
+"So I take every book down," she said, "feed each title back through the machine, divide by the new number, and shelve it again. It takes a whole day. But afterwards the walks get short again."
+
+"That seems like a lot of work."
+
+"It happens rarely, and it pays for itself. A good librarian doesn't avoid the big cleanup. She just doesn't do it every week."
+
+The next spring, she built ten shelves. The books came down, the titles went through the Counting Machine one last time, and each volume found a new home. Key and Yek, which had been neighbors out of necessity, landed on shelves seven and eight, still close but no longer crowded.
+
+The scholar came back and counted. One look. One look. One look. Occasionally two.
+
+"It's faster," he said, almost sad about it. "I have nothing to write down."
+
+Mira handed him a cup of tea and sat in the quiet of her shelves, each book a few steps from where its name said it should be.
+
+"That," she said, "is how you know it's working."
