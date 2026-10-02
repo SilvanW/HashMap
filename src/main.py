@@ -1,4 +1,4 @@
-from src.hashmap import HashMap
+from hashmap import HashMap
 
 hashmap = HashMap(size=5)
 
