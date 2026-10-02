@@ -38,7 +38,7 @@ class HashMap:
 
         result = linear_probing_search(self.map, index, key)
 
-        return result[0][1], result[1]
+        return result[0][1], result[1] + 1
 
     @property
     def loading_factor(self) -> float:

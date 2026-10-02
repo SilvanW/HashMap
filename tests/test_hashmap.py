@@ -37,3 +37,14 @@ def test_probing(hashmap: HashMap):
 
     assert key_result[0] == "value"
     assert yek_result[0] == "value 1"
+
+
+def test_comparison_counter(hashmap: HashMap):
+    hashmap.insert("key", "value")
+    hashmap.insert("yek", "value 1")
+
+    key_result = hashmap.retrieve("key")
+    yek_result = hashmap.retrieve("yek")
+
+    assert key_result[1] == 1
+    assert yek_result[1] == 2
