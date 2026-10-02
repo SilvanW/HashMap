@@ -5,6 +5,10 @@ from hashing import ord_hashing
 from probing import linear_probing, linear_probing_search
 
 
+class HashMapFullError(Exception):
+    pass
+
+
 class HashMap:
     def __init__(self, size: int) -> None:
 
@@ -14,7 +18,16 @@ class HashMap:
         self.size = size
         self.map: Map = [None] * size
 
+    @property
+    def loading_factor(self) -> float:
+        used = self.map.count(None)
+        return (self.size - used) / self.size
+
     def insert(self, key: str, value: str) -> None:
+
+        if self.loading_factor == 1:
+            raise HashMapFullError(f"Hashmap of size {self.size} is full")
+
         hash = ord_hashing(key)
 
         index = hash % self.size
@@ -39,9 +52,3 @@ class HashMap:
         result = linear_probing_search(self.map, index, key)
 
         return result[0][1], result[1] + 1
-
-    @property
-    def loading_factor(self) -> float:
-        used = self.map.count(None)
-
-        return (self.size - used) / self.size

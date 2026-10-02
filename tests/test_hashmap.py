@@ -1,6 +1,6 @@
 import pytest
 
-from hashmap import HashMap
+from hashmap import HashMap, HashMapFullError
 
 
 @pytest.fixture
@@ -48,3 +48,11 @@ def test_comparison_counter(hashmap: HashMap):
 
     assert key_result[1] == 1
     assert yek_result[1] == 2
+
+
+def test_full_hashmap(hashmap: HashMap):
+    for i in range(5):
+        hashmap.insert(f"key{i}", "value")
+
+    with pytest.raises(HashMapFullError):
+        hashmap.insert("test", "value")
