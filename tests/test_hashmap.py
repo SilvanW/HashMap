@@ -1,6 +1,7 @@
 import pytest
 
-from hashmap import HashMap, HashMapFullError
+from exceptions import HashMapFullError, HashMapSizeError
+from hashmap import HashMap
 
 
 @pytest.fixture
@@ -9,7 +10,7 @@ def hashmap() -> HashMap:
 
 
 def test_invalid_size():
-    with pytest.raises(ValueError):
+    with pytest.raises(HashMapSizeError):
         HashMap(size=4)
 
 
