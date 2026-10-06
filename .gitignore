@@ -1,3 +1,7 @@
+# Files
+100000-words.txt
+.DS_Store
+
 # Folders
 .venv/
 __pycache__/

@@ -1,15 +1,19 @@
 import random
+from math import floor
 from typing import TypedDict
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
-from mpmath import e1
+from tqdm import tqdm
 
 from hashmap import HashMap
 from probing import ProbingImplementation
 
-with open("data/corpus_1000.txt", "r") as fh:
+HASHMAP_SIZE = 10007
+
+with open("data/100000-words.txt", "r") as fh:
     corpus = fh.readlines()
 
 corpus: list[str] = [word for line in corpus for word in line.split(" ")]
@@ -29,11 +33,15 @@ dataset: list[Scores] = []
 
 for implementation in ProbingImplementation:
     for target_loading_factor in range(1, 11, 1):
-        hashmap = HashMap(size=373, probing_implementation=implementation)
+        hashmap = HashMap(size=HASHMAP_SIZE, probing_implementation=implementation)
 
         inserted_words = []
 
-        for i, word in enumerate(corpus):
+        for i, word in tqdm(
+            enumerate(corpus),
+            desc=f"Inserting words for {implementation.value}",
+            total=floor(HASHMAP_SIZE * (target_loading_factor / 10)),
+        ):
             try:
                 hashmap.insert(word, word)
             except IndexError as e:
@@ -91,6 +99,7 @@ sns.lineplot(
     ax=ax_line,
 )
 # ax_line.set_yscale("log")
+ax_line.set_xticks(np.arange(0, 1.01, 0.1))
 ax_line.set_title("Mean per loading factor")
 
 fig.suptitle("HashMap comparisons per loading factor")
