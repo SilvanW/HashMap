@@ -3,17 +3,18 @@ from typing import Protocol
 
 from custom_types import Item, Map
 from exceptions import ProbingNotImplementedError, ProbingSearchNotImplementedError
+from hashing import ord_hashing_position
 
 
 class Probing(Protocol):
-    def __call__(self, map: Map, index: int) -> int: ...
+    def __call__(self, map: Map, index: int, key: str) -> int: ...
 
 
 class ProbingSearch(Protocol):
     def __call__(self, map: Map, index: int, key: str) -> tuple[Item, int]: ...
 
 
-def linear_probing(map: Map, index: int) -> int:
+def linear_probing(map: Map, index: int, key: str) -> int:
     map_size: int = len(map)
     for i in range(index + 1, index + 1 + map_size):
         new_index = i % map_size
@@ -23,10 +24,30 @@ def linear_probing(map: Map, index: int) -> int:
     raise IndexError("Hashmap does not have any free indexes ")
 
 
-def quadratic_probing(map: Map, index: int) -> int:
+def quadratic_probing(map: Map, index: int, key: str) -> int:
     map_size: int = len(map)
     for k in range(1, map_size + 1):
         new_index = (index + k**2) % map_size
+        if map[new_index] is None:
+            return new_index
+
+    raise IndexError("Hashmap does not have any free indexes")
+
+
+def double_hashing_probing(
+    map: Map,
+    index: int,
+    key: str,
+) -> int:
+    map_size: int = len(map)
+    step: int = ord_hashing_position(key) % map_size
+
+    # The step must never be 0, or we'd probe the same slot forever
+    if step == 0:
+        step = 1
+
+    for k in range(1, map_size + 1):
+        new_index = (index + k * step) % map_size
         if map[new_index] is None:
             return new_index
 
@@ -61,19 +82,42 @@ def quadratic_probing_search(map: Map, index: int, key: str) -> tuple[Item, int]
     raise IndexError(f"Hashmap does not contain key {key}")
 
 
+def double_hashing_search(map: Map, index: int, key: str) -> tuple[Item, int]:
+    map_size: int = len(map)
+    step: int = ord_hashing_position(key) % map_size
+
+    # Must match the insertion function exactly
+    if step == 0:
+        step = 1
+
+    for k in range(1, map_size + 1):
+        new_index = (index + k * step) % map_size
+
+        if map[new_index] is None:
+            break
+
+        if map[new_index][0] == key:
+            return map[new_index], k
+
+    raise IndexError(f"Hashmap does not contain key {key}")
+
+
 class ProbingImplementation(Enum):
     LINEAR = "linear"
     QUADRATIC = "quadratic"
+    DOUBLE_HASHING = "double_hashing"
 
 
 PROBING_LOOKUP: dict[ProbingImplementation, Probing] = {
     ProbingImplementation.LINEAR: linear_probing,
     ProbingImplementation.QUADRATIC: quadratic_probing,
+    ProbingImplementation.DOUBLE_HASHING: double_hashing_probing,
 }
 
 PROBING_SEARCH_LOOKUP: dict[ProbingImplementation, ProbingSearch] = {
     ProbingImplementation.LINEAR: linear_probing_search,
     ProbingImplementation.QUADRATIC: quadratic_probing_search,
+    ProbingImplementation.DOUBLE_HASHING: double_hashing_search,
 }
 
 

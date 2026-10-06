@@ -7,3 +7,7 @@ class Hashing(Protocol):
 
 def ord_hashing(key: str) -> int:
     return sum([ord(char) for char in key])
+
+
+def ord_hashing_position(key: str) -> int:
+    return sum(ord(char) * i for i, char in enumerate(key))

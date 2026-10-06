@@ -51,7 +51,11 @@ class HashMap:
         index = hash % self.size
 
         if self.map[index] is not None and self.map[index][1] != value:
-            index = self.probing_function(self.map, index)
+            try:
+                index = self.probing_function(self.map, index, key)
+            except IndexError as e:
+                print(self.remaining_space, self.loading_factor)
+                raise IndexError from e
 
         self.map[index] = (key, value)
 

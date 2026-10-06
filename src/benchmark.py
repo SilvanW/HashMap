@@ -31,16 +31,21 @@ for implementation in ProbingImplementation:
     for target_loading_factor in range(1, 11, 1):
         hashmap = HashMap(size=373, probing_implementation=implementation)
 
+        inserted_words = []
+
         for i, word in enumerate(corpus):
-            hashmap.insert(word, word)
+            try:
+                hashmap.insert(word, word)
+            except IndexError as e:
+                break
+
+            inserted_words.append(word)
 
             if (
                 hashmap.loading_factor >= target_loading_factor / 10
                 or hashmap.remaining_space == 0
             ):
                 break
-
-        inserted_words = corpus[: i + 1]
 
         num_comparisons: list[int] = [
             hashmap.retrieve(word)[1] for word in inserted_words
@@ -64,6 +69,30 @@ df = pd.DataFrame(
     for n in score["num_comparisons"]
 )
 
-sns.boxplot(data=df, x="loading_factor", y="num_comparisons", hue="probing")
-plt.title("HashMap comparisons per loading factor")
+fig, (ax_box, ax_line) = plt.subplots(1, 2, figsize=(16, 6))
+
+sns.boxplot(
+    data=df,
+    x="loading_factor",
+    y="num_comparisons",
+    hue="probing",
+    log_scale=True,
+    ax=ax_box,
+)
+ax_box.set_title("Distribution per loading factor")
+
+sns.lineplot(
+    data=df,
+    x="loading_factor",
+    y="num_comparisons",
+    hue="probing",
+    estimator="mean",
+    marker="o",
+    ax=ax_line,
+)
+# ax_line.set_yscale("log")
+ax_line.set_title("Mean per loading factor")
+
+fig.suptitle("HashMap comparisons per loading factor")
+plt.tight_layout()
 plt.show()
