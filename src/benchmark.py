@@ -8,6 +8,7 @@ import pandas as pd
 import seaborn as sns
 from tqdm import tqdm
 
+from hashing import HashingImplementation
 from hashmap import HashMap
 from probing import ProbingImplementation
 
@@ -33,7 +34,11 @@ dataset: list[Scores] = []
 
 for implementation in ProbingImplementation:
     for target_loading_factor in range(1, 11, 1):
-        hashmap = HashMap(size=HASHMAP_SIZE, probing_implementation=implementation)
+        hashmap = HashMap(
+            size=HASHMAP_SIZE,
+            probing_implementation=implementation,
+            hashing_implementation=HashingImplementation.POLYNOMIAL,
+        )
 
         inserted_words = []
 

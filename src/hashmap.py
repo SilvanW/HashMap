@@ -2,7 +2,7 @@ import sympy
 
 from custom_types import Map
 from exceptions import HashMapFullError, HashMapSizeError
-from hashing import ord_hashing
+from hashing import HashingImplementation, get_hashing_function
 from probing import (
     ProbingImplementation,
     get_probing_function,
@@ -15,6 +15,7 @@ class HashMap:
         self,
         size: int,
         probing_implementation: ProbingImplementation = ProbingImplementation.LINEAR,
+        hashing_implementation: HashingImplementation = HashingImplementation.ORD,
     ) -> None:
 
         if not sympy.isprime(size):
@@ -32,6 +33,10 @@ class HashMap:
             probing_implementation=probing_implementation
         )
 
+        self.hashing_function = get_hashing_function(
+            hashing_implementation=hashing_implementation
+        )
+
     @property
     def loading_factor(self) -> float:
         used = self.map.count(None)
@@ -46,7 +51,7 @@ class HashMap:
         if self.loading_factor == 1:
             raise HashMapFullError(f"Hashmap of size {self.size} is full")
 
-        hash = ord_hashing(key)
+        hash = self.hashing_function(key)
 
         index = hash % self.size
 
@@ -61,7 +66,7 @@ class HashMap:
 
     def retrieve(self, key: str) -> tuple[str, int]:
 
-        hash = ord_hashing(key)
+        hash = self.hashing_function(key)
 
         index = hash % self.size
 

@@ -12,3 +12,7 @@ class ProbingNotImplementedError(NotImplementedError):
 
 class ProbingSearchNotImplementedError(NotImplementedError):
     pass
+
+
+class HashingNotImplementedError(NotImplementedError):
+    pass

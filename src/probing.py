@@ -3,7 +3,7 @@ from typing import Protocol
 
 from custom_types import Item, Map
 from exceptions import ProbingNotImplementedError, ProbingSearchNotImplementedError
-from hashing import ord_hashing_position
+from hashing import fnv1a_hashing
 
 
 class Probing(Protocol):
@@ -40,7 +40,7 @@ def double_hashing_probing(
     key: str,
 ) -> int:
     map_size: int = len(map)
-    step: int = ord_hashing_position(key) % map_size
+    step: int = fnv1a_hashing(key) % map_size
 
     # The step must never be 0, or we'd probe the same slot forever
     if step == 0:
@@ -84,7 +84,7 @@ def quadratic_probing_search(map: Map, index: int, key: str) -> tuple[Item, int]
 
 def double_hashing_search(map: Map, index: int, key: str) -> tuple[Item, int]:
     map_size: int = len(map)
-    step: int = ord_hashing_position(key) % map_size
+    step: int = fnv1a_hashing(key) % map_size
 
     # Must match the insertion function exactly
     if step == 0:
