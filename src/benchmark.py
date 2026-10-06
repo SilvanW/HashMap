@@ -13,7 +13,7 @@ from hashmap import HashMap, HashMapChaining
 from probing import ProbingImplementation
 
 HASHMAP_SIZE = 10007
-HASHING_IMPLEMENTATION = HashingImplementation.ORD
+HASHING_IMPLEMENTATION = HashingImplementation.POLYNOMIAL
 
 with open("data/100000-words.txt", "r") as fh:
     corpus = fh.readlines()
