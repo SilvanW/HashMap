@@ -9,10 +9,11 @@ import seaborn as sns
 from tqdm import tqdm
 
 from hashing import HashingImplementation
-from hashmap import HashMap
+from hashmap import HashMap, HashMapChaining
 from probing import ProbingImplementation
 
 HASHMAP_SIZE = 10007
+HASHING_IMPLEMENTATION = HashingImplementation.ORD
 
 with open("data/100000-words.txt", "r") as fh:
     corpus = fh.readlines()
@@ -37,7 +38,7 @@ for implementation in ProbingImplementation:
         hashmap = HashMap(
             size=HASHMAP_SIZE,
             probing_implementation=implementation,
-            hashing_implementation=HashingImplementation.POLYNOMIAL,
+            hashing_implementation=HASHING_IMPLEMENTATION,
         )
 
         inserted_words = []
@@ -71,6 +72,42 @@ for implementation in ProbingImplementation:
                 probing=implementation.value,
             )
         )
+
+for target_loading_factor in range(1, 11, 1):
+    hashmap = HashMapChaining(
+        size=HASHMAP_SIZE,
+        hashing_implementation=HASHING_IMPLEMENTATION,
+    )
+
+    inserted_words = []
+
+    for i, word in tqdm(
+        enumerate(corpus),
+        desc="Inserting words for chaining",
+        total=floor(HASHMAP_SIZE * (target_loading_factor / 10)),
+    ):
+        try:
+            hashmap.insert(word, word)
+        except IndexError as e:
+            break
+
+        inserted_words.append(word)
+
+        if (
+            hashmap.loading_factor >= target_loading_factor / 10
+            or hashmap.remaining_space == 0
+        ):
+            break
+
+    num_comparisons: list[int] = [hashmap.retrieve(word)[1] for word in inserted_words]
+
+    dataset.append(
+        Scores(
+            loading_factor=target_loading_factor / 10,
+            num_comparisons=num_comparisons,
+            probing="chaining",
+        )
+    )
 
 df = pd.DataFrame(
     {
